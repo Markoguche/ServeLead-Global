@@ -133,9 +133,9 @@ export default function About() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(16px,2vw,24px)' }}>
                     {[
                       { num: 6, suffix: '+', label: 'Businesses Built', color: 'var(--lime)' },
-                      { num: 103500, suffix: '+', label: 'Lives Impacted', color: 'var(--gold)' },
-                      { num: 350, suffix: 'K+', label: 'USD Managed', color: '#7EB8FF' },
-                      { num: 40, suffix: '+', label: 'Global Partners', color: '#FF9B7A' },
+                      { num: 103500, suffix: '+', label: 'Lives Impacted', color: 'var(--lime)' },
+                      { num: 350, suffix: 'K+', label: 'USD Managed', color: 'var(--lime)' },
+                      { num: 40, suffix: '+', label: 'Global Partners', color: 'var(--lime)' },
                     ].map(({ num, suffix, label, color }) => (
                       <div key={label} style={{ textAlign: 'center', padding: 'clamp(16px,2vw,24px) 12px', borderBottom: `2px solid ${color}33` }}>
                         <div className="stat-number" style={{ fontSize: 'clamp(1.8rem,3vw,3rem)', color }}>
