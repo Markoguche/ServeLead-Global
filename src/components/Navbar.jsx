@@ -113,7 +113,7 @@ export default function Navbar() {
               fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'var(--white)',
               letterSpacing: '-0.02em', whiteSpace: 'nowrap',
             }}>
-              Serve<span style={{ color: 'var(--lime)' }}>lead</span>
+              Serve<span style={{ color: 'var(--green-mid)' }}>lead</span>
             </span>
           </Link>
 
