@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedCounter from '../components/AnimatedCounter';
+import RobotFigure from '../components/RobotFigure';
 import { IconArrowRight, IconBolt, IconHandshake, IconShield, IconCrown, IconTarget, IconCpu, IconTrendingUp, IconCheck } from '../components/Icons';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -132,73 +133,127 @@ export default function Home() {
       </Helmet>
 
       {/* ══════════════ HERO ══════════════ */}
-      <section ref={heroRef} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'var(--dark)' }}>
+      <section ref={heroRef} style={{
+        position: 'relative', minHeight: '100vh',
+        display: 'flex', alignItems: 'center',
+        overflow: 'hidden', background: 'var(--dark)',
+      }}>
+        {/* Particle canvas */}
         <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0 }} />
 
-        <div className="hero-bg-grad" style={{ position: 'absolute', inset: 0, zIndex: 0,
-          background: 'radial-gradient(ellipse 80% 70% at 60% 40%, rgba(10,46,26,0.65) 0%, transparent 75%)',
+        {/* Gradient overlays */}
+        <div className="hero-bg-grad" style={{
+          position: 'absolute', inset: 0, zIndex: 0,
+          background: 'radial-gradient(ellipse 70% 80% at 30% 50%, rgba(10,46,26,0.7) 0%, transparent 70%)',
         }} />
-        <div style={{ position: 'absolute', right: '-8%', top: '5%', width: 'clamp(300px,45vw,640px)', height: 'clamp(300px,45vw,640px)',
-          background: 'radial-gradient(circle, rgba(184,255,0,0.055) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
-          animation: 'floatY 8s ease-in-out infinite',
+        {/* Right-side robot glow */}
+        <div style={{
+          position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)',
+          width: 'clamp(280px,40vw,560px)', height: 'clamp(280px,40vw,560px)',
+          background: 'radial-gradient(circle, rgba(184,255,0,0.07) 0%, transparent 65%)',
+          borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
         }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '180px', background: 'linear-gradient(to bottom,transparent,var(--dark))', zIndex: 0 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '160px', background: 'linear-gradient(to bottom,transparent,var(--dark))', zIndex: 1 }} />
 
-        <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '120px', paddingBottom: '80px', width: '100%' }}>
-          <div style={{ maxWidth: '860px' }}>
-            <div className="tag hero-tag" style={{ marginBottom: '32px' }}>Africa's #1 AI-Powered Business Development</div>
+        {/* Two-column hero layout */}
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '120px', paddingBottom: '60px', width: '100%' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', alignItems: 'center', minHeight: '70vh' }} className="hero-cols">
 
-            <h1 style={{ marginBottom: 0 }}>
-              <span className="split-line"><span className="hero-l1" style={{ display: 'block' }}>We Build</span></span>
-              <span className="split-line"><em className="hero-l2" style={{ display: 'block', color: 'var(--lime)', fontStyle: 'italic' }}>Africa's</em></span>
-              <span className="split-line"><span className="hero-l3" style={{ display: 'block' }}>Future</span></span>
-            </h1>
-
-            <p className="hero-sub" style={{ marginTop: '28px', maxWidth: '520px', fontSize: 'clamp(1rem, 1.25vw, 1.2rem)' }}>
-              A world-class AI-powered business development organization empowering startups and businesses to build, operate, and scale sustainably across Africa and beyond.
-            </p>
-
-            <div style={{ display: 'flex', gap: '14px', marginTop: '44px', flexWrap: 'wrap' }}>
-              <Link to="/services" className="btn btn-primary hero-btn">
-                Explore Services <IconArrowRight size={16} />
-              </Link>
-              <Link to="/contact" className="btn btn-outline hero-btn">Get in Touch</Link>
-            </div>
-          </div>
-
-          {/* Stat cards row */}
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1px',
-            marginTop: '72px', background: 'rgba(255,255,255,0.04)',
-          }} className="hero-stats-grid">
-            {[
-              { num: 103500, suffix: '+', label: 'People Impacted' },
-              { num: 6200, suffix: '+', label: 'Tech Professionals' },
-              { num: 350, suffix: 'K+', label: 'USD Managed' },
-              { num: 6, suffix: '+', label: 'Businesses Built' },
-            ].map(({ num, suffix, label }) => (
-              <div key={label} className="hero-stat"
-                style={{ background: 'rgba(6,15,9,0.88)', padding: 'clamp(16px,3vw,28px)', backdropFilter: 'blur(12px)', borderTop: '2px solid transparent', transition: 'border-color 0.3s' }}
-                onMouseEnter={e => e.currentTarget.style.borderTopColor = 'var(--lime)'}
-                onMouseLeave={e => e.currentTarget.style.borderTopColor = 'transparent'}
-              >
-                <div className="stat-number" style={{ fontSize: 'clamp(1.8rem,3.2vw,3.2rem)' }}>
-                  <AnimatedCounter end={num} suffix={suffix} />
-                </div>
-                <p style={{ fontSize: '0.8rem', marginTop: '6px', color: 'var(--gray)' }}>{label}</p>
+            {/* LEFT — text content */}
+            <div style={{ paddingRight: 'clamp(0px, 3vw, 40px)' }}>
+              <div className="tag hero-tag" style={{ marginBottom: '28px' }}>
+                Africa's #1 AI-Powered Business Development
               </div>
-            ))}
+
+              <h1 style={{ marginBottom: 0 }}>
+                <span className="split-line"><span className="hero-l1" style={{ display: 'block' }}>We Build</span></span>
+                <span className="split-line"><em className="hero-l2" style={{ display: 'block', color: 'var(--lime)', fontStyle: 'italic' }}>Africa's</em></span>
+                <span className="split-line"><span className="hero-l3" style={{ display: 'block' }}>Future</span></span>
+              </h1>
+
+              <p className="hero-sub" style={{
+                marginTop: '24px', maxWidth: '480px',
+                fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
+              }}>
+                A world-class AI-powered business development organization empowering startups and businesses to build, operate, and scale sustainably across Africa and beyond.
+              </p>
+
+              <div style={{ display: 'flex', gap: '12px', marginTop: '40px', flexWrap: 'wrap' }}>
+                <Link to="/services" className="btn btn-primary hero-btn">
+                  Explore Services <IconArrowRight size={16} />
+                </Link>
+                <Link to="/contact" className="btn btn-outline hero-btn">Get in Touch</Link>
+              </div>
+
+              {/* Stat row — beneath buttons */}
+              <div style={{
+                display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '1px',
+                marginTop: '48px', background: 'rgba(255,255,255,0.04)',
+                maxWidth: '420px',
+              }} className="hero-stat-grid">
+                {[
+                  { num: 103500, suffix: '+', label: 'People Impacted' },
+                  { num: 6200, suffix: '+', label: 'Tech Professionals' },
+                  { num: 350, suffix: 'K+', label: 'USD Managed' },
+                  { num: 6, suffix: '+', label: 'Businesses Built' },
+                ].map(({ num, suffix, label }) => (
+                  <div key={label} className="hero-stat"
+                    style={{
+                      background: 'rgba(6,15,9,0.9)', padding: 'clamp(14px,2vw,22px)',
+                      backdropFilter: 'blur(12px)',
+                      borderTop: '2px solid transparent', transition: 'border-color 0.3s',
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.borderTopColor = 'var(--lime)'}
+                    onMouseLeave={e => e.currentTarget.style.borderTopColor = 'transparent'}
+                  >
+                    <div className="stat-number" style={{ fontSize: 'clamp(1.6rem,2.8vw,2.8rem)' }}>
+                      <AnimatedCounter end={num} suffix={suffix} />
+                    </div>
+                    <p style={{ fontSize: '0.72rem', marginTop: '4px', color: 'var(--gray)' }}>{label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT — robot figure (positioned absolutely within this column) */}
+            <div style={{ position: 'relative', height: 'clamp(400px, 70vh, 680px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="hero-robot-col">
+              <RobotFigure />
+            </div>
+
           </div>
         </div>
 
         {/* Scroll cue */}
-        <div className="hero-scroll" style={{ position: 'absolute', bottom: '28px', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', zIndex: 2 }}>
-          <span style={{ fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gray)' }}>Scroll</span>
-          <div style={{ width: '1px', height: '52px', background: 'linear-gradient(to bottom,var(--lime),transparent)', animation: 'scrollLine 2.2s ease-in-out infinite' }} />
+        <div className="hero-scroll" style={{
+          position: 'absolute', bottom: '28px', left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', zIndex: 3,
+        }}>
+          <span style={{ fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gray)' }}>Scroll</span>
+          <div style={{ width: '1px', height: '48px', background: 'linear-gradient(to bottom,var(--lime),transparent)', animation: 'scrollLine 2.2s ease-in-out infinite' }} />
         </div>
 
         <style>{`
-          @media (max-width: 640px) { .hero-stats-grid { grid-template-columns: repeat(2,1fr) !important; } }
+          @media (max-width: 900px) {
+            .hero-cols {
+              grid-template-columns: 1fr !important;
+              gap: 0 !important;
+            }
+            .hero-robot-col {
+              height: clamp(240px, 55vw, 380px) !important;
+              margin-top: 0 !important;
+            }
+          }
+          @media (max-width: 640px) {
+            .hero-robot-col {
+              height: clamp(200px, 70vw, 300px) !important;
+              opacity: 0.85;
+            }
+            .hero-stat-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              max-width: 100% !important;
+            }
+          }
         `}</style>
       </section>
 

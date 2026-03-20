@@ -51,7 +51,7 @@ export default function Footer() {
           {[
             { title:'Company', links:[{l:'About Us',to:'/about'},{l:'Our Team',to:'/team'},{l:'Organizations',to:'/organizations'},{l:'Portfolio',to:'/portfolio'}] },
             { title:'Services', links:[{l:'AI-BaaS',to:'/services#aibaas'},{l:'Venture Studio',to:'/services#venture'},{l:'Event Management',to:'/services#events'},{l:'Training',to:'/services#training'}] },
-            { title:'Contact', links:[{l:'hello@serveleadglobal.net',href:'mailto:hello@serveleadglobal.net'},{l:'Abuja, Nigeria',href:'#'},{l:'serveleadglobal.net',href:'https://www.serveleadglobal.net'},{l:'Get Started',to:'/contact'}] },
+            { title:'Contact', links:[{l:'serveleadglobal@gmail.com',href:'mailto:serveleadglobal@gmail.com'},{l:'Abuja, Nigeria',href:'#'},{l:'serveleadglobal.net',href:'https://www.serveleadglobal.net'},{l:'Get Started',to:'/contact'}] },
           ].map(({ title, links }) => (
             <div key={title}>
               <h6 style={{ fontFamily:'var(--font-body)', fontWeight:600, fontSize:'0.72rem', letterSpacing:'0.14em', textTransform:'uppercase', color:'var(--lime)', marginBottom:'20px' }}>{title}</h6>
