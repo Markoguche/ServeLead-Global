@@ -1,12 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <meta name="theme-color" content="#0A2E1A" />
+    <meta name="description" content="Servelead Global — Africa's Premier AI-Powered Business Development Organization." />
+    <meta property="og:title" content="Servelead Global | AI-Powered Business Development" />
+    <meta property="og:description" content="World-class AI-powered business development organization empowering startups and businesses across Africa." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,200..900;1,9..40,200..900&display=swap" rel="stylesheet" />
+    <title>Servelead Global | AI-Powered Business Development</title>
+    <style>
+      html, body { margin: 0; padding: 0; background: #060F09; }
+      #cursor {
+        position: fixed; width: 10px; height: 10px;
+        background: #B8FF00; border-radius: 50%;
+        pointer-events: none; z-index: 99999;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        transition: width 0.2s, height 0.2s;
+      }
+      #cursor-follower {
+        position: fixed; width: 36px; height: 36px;
+        border: 1px solid rgba(184,255,0,0.35); border-radius: 50%;
+        pointer-events: none; z-index: 99998;
+        transform: translate(-50%, -50%);
+      }
+      @media (max-width: 768px) {
+        #cursor, #cursor-follower { display: none; }
+      }
+    </style>
   </head>
   <body>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
